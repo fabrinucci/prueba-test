@@ -2,6 +2,15 @@ on:
   push:
     branches:
       - main
+      - develop
+      - 'feature/*'
+      - 'bugfix/*'
+      - 'release/*'
+      - 'hotfix/*'
+  pull_request:
+    branches:
+      - main
+      - develop
 
 jobs:
   build:
@@ -13,7 +22,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 18
-    - name: Install
+    - name: Install dependencies
       run: npm ci
     - name: Run linter
       run: npm run lint
